@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,19 +24,18 @@ jobs:
           node-version: "18.x"
 
       - name: Build
-        id: build
         run: |
           npm install
           npm run build
 
-      - name: Create release
+      - name: Ensure release exists and upload assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           tag="${GITHUB_REF#refs/tags/}"
 
-          gh release upload "$tag" \
-            --title="$tag" \
-            --draft \
-            --clobber \
-            main.js manifest.json styles.css
+          if ! gh release view "$tag" &>/dev/null; then
+            gh release create "$tag" --title="$tag" --draft
+          fi
+
+          gh release upload "$tag" main.js manifest.json styles.css --clobber
