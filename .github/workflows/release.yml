@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -33,7 +34,8 @@ jobs:
         run: |
           tag="${GITHUB_REF#refs/tags/}"
 
-          gh release create "$tag" \
+          gh release upload "$tag" \
             --title="$tag" \
             --draft \
+            --clobber \
             main.js manifest.json styles.css
