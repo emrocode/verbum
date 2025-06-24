@@ -1,0 +1,16 @@
+{
+  "id": "verbum",
+  "name": "Verbum",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Subraya palabras y obtén su significado del diccionario al pasar el cursor.",
+  "author": "Emilio Romero",
+  "authorUrl": "https://github.com/emrocode",
+  "repo": "emrocode/verbum",
+  "keywords": [
+    "rae",
+    "diccionario",
+    "español"
+  ],
+  "isDesktopOnly": false
+}
