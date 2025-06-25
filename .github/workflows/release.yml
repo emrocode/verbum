@@ -35,7 +35,10 @@ jobs:
           tag="${GITHUB_REF#refs/tags/}"
 
           if ! gh release view "$tag" &>/dev/null; then
-            gh release create "$tag" --title="$tag" --draft
+            gh release create "$tag" \
+              --title="$tag" \
+              --draft \
+              main.js manifest.json styles.css
           fi
 
           gh release upload "$tag" main.js manifest.json styles.css --clobber
