@@ -22,8 +22,8 @@ Esta es una <mark>palabra</mark> que quiero buscar.
 2. Switch to reading mode in Obsidian
 3. Hover over the marked word to see its definition and different senses in a tooltip
 
-<img src="./screenshot_light.png#gh-light-mode-only" alt="Spanish Dictionary Plugin in action showing tooltip with word definition" width="600" />
-<img src="./screenshot_dark.png#gh-dark-mode-only" alt="Spanish Dictionary Plugin in action showing tooltip with word definition" width="600" />
+<img src="./screenshot_light.png#gh-light-mode-only" alt="Verbum plugin in action showing tooltip with word definition" width="600" />
+<img src="./screenshot_dark.png#gh-dark-mode-only" alt="Verbum plugin in action showing tooltip with word definition" width="600" />
 
 ## Installation
 
