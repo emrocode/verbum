@@ -30,9 +30,9 @@ Esta es una <mark>palabra</mark> que quiero buscar.
 ### Manual Installation
 
 1. Download the latest release from the releases page
-2. Extract the files to your vault's .obsidian/plugins/verbum/ folder
+2. Extract the files to your vault's `.obsidian/plugins/verbum/` folder
 3. Reload Obsidian or restart the application
-4. Enable the plugin in Settings → Community Plugins
+4. Enable the plugin in Settings > Community Plugins
 
 ### From Community Plugins
 
