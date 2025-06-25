@@ -28,6 +28,13 @@ jobs:
           npm install
           npm run build
 
+      - name: Package
+        run: |
+          PLUGIN_NAME=$(basename "$GITHUB_REPOSITORY")
+          mkdir "$PLUGIN_NAME"
+          cp main.js manifest.json styles.css README.md "$PLUGIN_NAME"
+          zip -r "$PLUGIN_NAME.zip" "$PLUGIN_NAME"
+
       - name: Ensure release exists and upload assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
