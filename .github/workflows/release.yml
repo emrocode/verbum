@@ -48,4 +48,4 @@ jobs:
               main.js manifest.json styles.css
           fi
 
-          gh release upload "$tag" main.js manifest.json styles.css --clobber
+          gh release upload "$tag" main.js manifest.json styles.css "${{ github.event.repository.name }}.zip" --clobber
