@@ -6,22 +6,37 @@ export function showVerbumPopper(opt: VerbumPopper, settings: VerbumSettings) {
   if (current) current.remove();
 
   const rect = opt.target.getBoundingClientRect();
-  const popper = document.createElement("div");
-  popper.dataset.verbum = opt.word;
-  popper.className = "verbum";
+  const popper = document.body.createEl("div", {
+    cls: "verbum",
+    attr: { "data-verbum": opt.word },
+  });
 
   const showOrigin = settings.showOrigin && opt.definition.origin;
   const rawOrigin = showOrigin ? `[[${opt.definition.origin}]]` : "";
   const rawText = opt.definition.text;
   const raw = `${rawOrigin}${rawText}`;
-  popper.textContent = raw;
 
-  popper.innerHTML = popper.innerHTML.replace(
-    /\[\[(.*?)\]\]/g,
-    `<span class="verbum-origin">$1</span>`,
-  );
+  const regex = /\[\[(.*?)\]\]/g;
 
-  document.body.appendChild(popper);
+  let idx = 0;
+  let match;
+
+  while ((match = regex.exec(raw)) !== null) {
+    const text = raw.slice(idx, match.index);
+
+    if (text) popper.createEl("span", { text });
+
+    popper.createEl("span", {
+      text: match[1],
+      cls: "verbum-origin",
+    });
+
+    idx = regex.lastIndex;
+  }
+
+  const remainingText = raw.slice(idx);
+
+  if (remainingText) popper.createEl("span", { text: remainingText });
 
   requestAnimationFrame(() => {
     const popperWidth = popper.offsetWidth;
@@ -31,9 +46,9 @@ export function showVerbumPopper(opt: VerbumPopper, settings: VerbumSettings) {
     if (left < 8) left = 8;
     if (left > maxLeft) left = maxLeft;
 
-    popper.style.left = `${left}px`;
-    popper.style.top = `${rect.bottom + 8}px`;
-    popper.style.opacity = "1";
+    popper.style.setProperty("--verbum-left", `${left}px`);
+    popper.style.setProperty("--verbum-top", `${rect.bottom + 8}px`);
+    popper.classList.add("visible");
   });
 
   setCurrentPopper(popper);

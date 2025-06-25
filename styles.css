@@ -1,5 +1,7 @@
 .verbum {
   position: fixed;
+  left: var(--verbum-left);
+  top: var(--verbum-top);
   padding: var(--size-4-4);
   max-width: var(--popover-width);
   width: max-content;
@@ -24,6 +26,11 @@
     font-weight: var(--font-semibold);
     border-radius: var(--radius-s);
   }
+}
+
+.verbum.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .verbum-origin {
