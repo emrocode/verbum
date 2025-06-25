@@ -16,7 +16,7 @@ A plugin for Obsidian that provides instant Spanish word definitions through too
 1. Mark any Spanish word in your notes using the `<mark>` tag:
 
 ```md
-Esta es una <mark>palabra</mark> que quiero buscar.
+Esta es una ==palabra== que quiero buscar.
 ```
 
 2. Switch to reading mode in Obsidian
